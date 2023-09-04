@@ -39,8 +39,17 @@ header {
 	background-size: 100%;
 	padding: 50px 70px;
 }
-header img {
-	width: 207px;
+header .logo {
+	width: 328px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+header .logo img {
+	width: 285px;
+}
+header .logo img.logo__circle {
+	width: 40px;
 }
 header .infoContainer {
 	width: 1000px;
@@ -58,7 +67,14 @@ header .infoContainer h2 {
 	margin: 0 auto 37px auto;
 }
 header .infoContainer .search {
+	width: 954px;
 	position: relative;
+}
+header .infoContainer .search .search__erase {
+	width: 13px;
+	position: absolute;
+	top: 29.5px;
+	right: 85px;
 }
 header .infoContainer .search input {
 	width: 954px;
@@ -78,7 +94,7 @@ header .infoContainer .search .search__button {
 	border-radius: 10px;
 	background-color: #000;
 	top: 10px;
-	right: 62px; /* 10px + sa taille */
+	right: 10px;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
@@ -99,15 +115,18 @@ main .filters {
 	margin: auto;
 	max-width: 1235px;
 }
-main .filters .filter {
+main .filters .filter,
+main .filtersSelect .filterSelect {
 	padding: 15px;
 	display: flex;
-	background-color: #fff;
 	border-radius: 10px;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+}
+main .filters .filter {
+	background-color: #fff;
 	margin-right: 65px;
 	cursor: pointer;
 }
@@ -123,6 +142,27 @@ main .filters .numberOfRecipes {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+}
+main .filtersSelect {
+	width: auto;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	row-gap: 15px;
+	column-gap: 55px;
+	margin: auto;
+	max-width: 1235px;
+	margin-top: 21px;
+}
+main .filtersSelect .filterSelect {
+	background-color: #ffd15b;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+main .filtersSelect .filterSelect::after {
+	content: 'X';
+	font-weight: 700;
+	cursor: pointer;
 }
 main section {
 	width: 1235px;
@@ -144,6 +184,7 @@ main section article figure {
 	position: relative;
 	overflow: hidden;
 	margin: 0;
+	box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
 }
 main section article figure img {
 	width: 380px;

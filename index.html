@@ -4,15 +4,20 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="shortcut icon" href="assets/imgs/logos/logo_circle.ico" type="image/x-icon" />
 		<title>Les petits plats | Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</title>
 	</head>
 	<body>
 		<header>
-			<img src="assets/imgs/logos/logo.svg" alt="logo du site les petits plats" />
+			<div class="logo">
+				<img src="assets/imgs/logos/logo.svg" alt="logo du site les petits plats" />
+				<img src="assets/imgs/logos/logo_circle.svg" alt="logo du site les petits plat" class="logo__circle" />
+			</div>
 			<div class="infoContainer">
 				<h2>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES</h2>
 				<div class="search">
 					<input type="text" placeholder="Rechercher une recette, un ingrédient, ..." />
+					<img src="assets/icones/erase.svg" alt="effacer la barre de recherche" class="search__erase" />
 					<div class="search__button">
 						<img src="assets/icones/search--white.svg" alt="search" />
 					</div>
@@ -25,6 +30,9 @@
 				<div class="filter">Appareils</div>
 				<div class="filter">Ustensiles</div>
 				<div class="numberOfRecipes">1500 recettes</div>
+			</div>
+			<div class="filtersSelect">
+				<div class="filterSelect">Crème de coco</div>
 			</div>
 			<section>
 				<article>
