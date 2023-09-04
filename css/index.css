@@ -87,3 +87,123 @@ header .infoContainer .search .search__button {
 header .infoContainer .search .search__button img {
 	width: 28px;
 }
+main {
+	background-color: #ededed;
+	padding: 20px 100px;
+}
+main .filters {
+	width: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	max-width: 1235px;
+}
+main .filters .filter {
+	padding: 15px;
+	display: flex;
+	background-color: #fff;
+	border-radius: 10px;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin-right: 65px;
+	cursor: pointer;
+}
+main .filters .filter::after {
+	content: '>';
+	transform: rotate(90deg);
+	margin-left: 63px;
+}
+main .filters .numberOfRecipes {
+	margin-left: 380px;
+	font-family: 'Anton', Arial, Helvetica, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+main section {
+	width: 1235px;
+	margin: 55px auto;
+	display: grid;
+	column-gap: 48px;
+	row-gap: 66px;
+	grid-template-columns: repeat(3, 1fr);
+}
+main section article {
+	width: 380px;
+	height: 731px;
+}
+main section article figure {
+	width: 380px;
+	height: 731px;
+	background-color: #fff;
+	border-radius: 20px;
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+}
+main section article figure img {
+	width: 380px;
+	height: 253px;
+	object-fit: cover;
+}
+main section article figure .duration {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	padding: 5px 15px;
+	border-radius: 15px;
+	background-color: #ffd15b;
+}
+main section article figure figcaption {
+	padding: 0 25px;
+}
+main section article figure figcaption h3 {
+	font-family: 'Anton', Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin: 30px 0 0 0;
+}
+main section article figure figcaption h4 {
+	color: #7a7a7a;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1.08px;
+	text-transform: uppercase;
+	margin: 30px 0 15px 0;
+	text-align: justify;
+}
+main section article figure figcaption h4 .recipes {
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+main section article figure figcaption .ingredients {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 100px;
+	row-gap: 21px;
+}
+main section article figure figcaption .ingredients .ingredient h5 {
+	margin: 0;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+main section article figure figcaption .ingredients .ingredient p {
+	margin: 0;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	color: #7a7a7a;
+}
