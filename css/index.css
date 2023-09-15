@@ -75,6 +75,7 @@ header .infoContainer .search .search__erase {
 	position: absolute;
 	top: 29.5px;
 	right: 85px;
+	cursor: pointer;
 }
 header .infoContainer .search input {
 	width: 954px;
@@ -111,13 +112,12 @@ main .filters {
 	width: auto;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	margin: auto;
 	max-width: 1235px;
 }
 main .filters .filter,
 main .filtersSelect .filterSelect {
-	padding: 15px;
 	display: flex;
 	border-radius: 10px;
 	font-size: 16px;
@@ -129,11 +129,96 @@ main .filters .filter {
 	background-color: #fff;
 	margin-right: 65px;
 	cursor: pointer;
+	flex-direction: column;
+	width: auto;
+	overflow: hidden;
+	max-height: 315px;
+	height: auto;
 }
-main .filters .filter::after {
+main .filters .filter.ingredients {
+	width: 195px;
+}
+main .filters .filter.appareils {
+	width: 179px;
+}
+main .filters .filter.ustensiles {
+	width: 188px;
+}
+main .filters .filter .filter__options {
+	display: none;
+}
+main .filters .filter .filter__options.open {
+	display: block;
+}
+main .filters .filter .filter__name {
+	font-size: 16px;
+	padding: 15px;
+}
+main .filters .filter__name::after {
 	content: '>';
 	transform: rotate(90deg);
 	margin-left: 63px;
+	transition: all 0.1s ease-in-out;
+	display: inline-block;
+	font-size: 16px;
+}
+.filter.open .filter__name::after {
+	transform: rotate(-90deg);
+}
+main .filters .filter .filter__options {
+	width: 100%;
+}
+main .filters .filter .filter__options .filter__options__search {
+	height: 36px;
+	margin-bottom: 15px;
+	position: relative;
+	padding: 0 15px;
+}
+
+main .filters .filter .filter__options .filter__options__search .filter__options__search__erase {
+	width: 6px;
+	position: absolute;
+	top: 15px;
+	right: 50px;
+}
+main .filters .filter .filter__options .filter__options__search .filter__options__search__searchBtn {
+	width: 14px;
+	position: absolute;
+	top: 11px;
+	right: 26px;
+}
+main .filters .filter .filter__options .filter__options__search input {
+	border-radius: 2px;
+	border: 1px solid #c6c6c6;
+	height: 100%;
+	color: #7a7a7a;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	width: 100%;
+}
+main .filters .filter .filter__options ul {
+	padding: 0;
+	padding-bottom: 15px;
+	margin: 0;
+	overflow-y: scroll;
+	max-height: 220px;
+}
+main .filters .filter .filter__options ul::-webkit-scrollbar {
+	display: none;
+}
+main .filters .filter .filter__options .option {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0 15px;
+	margin: 0;
+	text-decoration: none;
+	height: 37px;
+}
+main .filters .filter .filter__options .option:hover {
+	background-color: #ffd15b;
 }
 main .filters .numberOfRecipes {
 	margin-left: 380px;
@@ -142,6 +227,7 @@ main .filters .numberOfRecipes {
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+	align-self: flex-start;
 }
 main .filtersSelect {
 	width: auto;
@@ -158,6 +244,7 @@ main .filtersSelect .filterSelect {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 15px;
 }
 main .filtersSelect .filterSelect::after {
 	content: 'X';

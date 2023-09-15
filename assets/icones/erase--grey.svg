@@ -1,0 +1,7 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" width="17" height="17">
+	<title>erase-svg</title>
+	<style>
+		.s0 { fill: #7a7a7a;stroke: #7a7a7a;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2.2 } 
+	</style>
+	<path id="Layer" fill-rule="evenodd" class="s0" d="m15 15l-6.5-6.5m0 0l-6.5-6.5m6.5 6.5l6.5-6.5m-6.5 6.5l-6.5 6.5"/>
+</svg>
