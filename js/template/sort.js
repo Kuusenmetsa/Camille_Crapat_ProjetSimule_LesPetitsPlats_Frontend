@@ -1,29 +1,34 @@
 function sortTemplate(type, css, datas) {
-	var ingredientsCurrent = [];
-	var ustensilsCurrent = [];
-	var appliancesCurrent = [];
+	if (datas && datas.length > 0) {
+		var ingredientsCurrent = [];
+		var ustensilsCurrent = [];
+		var appliancesCurrent = [];
 
-	datas.forEach((data) => {
-		data.ingredients.forEach((ingredient) => {
-			if (ingredientsCurrent.length === 0) {
-				ingredientsCurrent.push(ingredient.ingredient.toLowerCase());
-			} else if (ingredientsCurrent.indexOf(ingredient.ingredient.toLowerCase()) === -1) {
-				ingredientsCurrent.push(ingredient.ingredient.toLowerCase());
+		datas.forEach((data) => {
+			data.ingredients.forEach((ingredient) => {
+				if (ingredientsCurrent.length === 0) {
+					ingredientsCurrent.push(ingredient.ingredient.toLowerCase());
+				} else if (ingredientsCurrent.indexOf(ingredient.ingredient.toLowerCase()) === -1) {
+					ingredientsCurrent.push(ingredient.ingredient.toLowerCase());
+				}
+			});
+			data.ustensils.forEach((ustensil) => {
+				if (ustensilsCurrent.length === 0) {
+					ustensilsCurrent.push(ustensil.toLowerCase());
+				} else if (ustensilsCurrent.indexOf(ustensil.toLowerCase()) === -1) {
+					ustensilsCurrent.push(ustensil.toLowerCase());
+				}
+			});
+			if (appliancesCurrent.length === 0) {
+				appliancesCurrent.push(data.appliance.toLowerCase());
+			} else if (appliancesCurrent.indexOf(data.appliance.toLowerCase()) === -1) {
+				appliancesCurrent.push(data.appliance.toLowerCase());
 			}
 		});
-		data.ustensils.forEach((ustensil) => {
-			if (ustensilsCurrent.length === 0) {
-				ustensilsCurrent.push(ustensil.toLowerCase());
-			} else if (ustensilsCurrent.indexOf(ustensil.toLowerCase()) === -1) {
-				ustensilsCurrent.push(ustensil.toLowerCase());
-			}
-		});
-		if (appliancesCurrent.length === 0) {
-			appliancesCurrent.push(data.appliance.toLowerCase());
-		} else if (appliancesCurrent.indexOf(data.appliance.toLowerCase()) === -1) {
-			appliancesCurrent.push(data.appliance.toLowerCase());
-		}
-	});
+		ingredientsCurrent.sort();
+		ustensilsCurrent.sort();
+		appliancesCurrent.sort();
+	}
 
 	function sortDOM() {
 		const eraseImg = `assets/icones/erase--grey.svg`;
@@ -65,17 +70,17 @@ function sortTemplate(type, css, datas) {
 		switch (type) {
 			case 'Ingrédients':
 				ingredientsCurrent.forEach((ingredient) => {
-					ul.appendChild(liDOM(ingredient));
+					ul.appendChild(liDOM(ingredient, css));
 				});
 				break;
 			case 'Appareils':
 				appliancesCurrent.forEach((appliance) => {
-					ul.appendChild(liDOM(appliance));
+					ul.appendChild(liDOM(appliance, css));
 				});
 				break;
 			case 'Ustensiles':
 				ustensilsCurrent.forEach((ustensil) => {
-					ul.appendChild(liDOM(ustensil));
+					ul.appendChild(liDOM(ustensil, css));
 				});
 				break;
 		}
@@ -85,13 +90,12 @@ function sortTemplate(type, css, datas) {
 
 		filter.appendChild(filterName);
 		filter.appendChild(filterOptions);
-		console.log(filter);
 		return filter;
 	}
 
-	function liDOM(valeur) {
+	function liDOM(valeur, css) {
 		const li = document.createElement('li');
-		li.setAttribute('class', 'option');
+		li.setAttribute('class', `option ${css}`);
 		li.textContent = valeur;
 
 		return li;

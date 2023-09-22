@@ -8,8 +8,8 @@ function filter() {
 	// Click sur un filtre
 	filter.forEach((fil) => {
 		const filterName = fil.querySelector('div.filter__name');
+		const option = fil.querySelector('div.filter__options');
 		filterName.addEventListener('click', () => {
-			const option = fil.querySelector('div.filter__options');
 			toogleFilter(fil, option);
 		});
 	});
@@ -27,6 +27,7 @@ function filter() {
 			const sortDOM = sortModel.sortDOM();
 			numberOfRecipes.before(sortDOM);
 		});
+		numberOfRecipes.textContent = `${recipesData.length} ${recipesData.length > 1 ? `Recettes` : `Recette`}`;
 	}
 
 	function toogleFilter(fil, option) {
