@@ -1,4 +1,5 @@
 function init() {
+	filters();
 	recipes().displayRecipes(); // Chargement des recettes
 	filter().displayFilter(); // Chargement des filtres
 	filter(); // Chargement des filtre

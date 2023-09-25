@@ -1,4 +1,4 @@
-function filterTemplate(type, css, datas) {
+function filterTemplate(type, css, data) {
 	function filterDOM() {
 		const eraseImg = `assets/icones/erase--grey.svg`;
 		const searchBtnImg = `assets/icones/search--grey.svg`;
@@ -36,8 +36,8 @@ function filterTemplate(type, css, datas) {
 
 		const ul = document.createElement('ul');
 
-		datas.forEach((data) => {
-			ul.appendChild(liDOM(data, css));
+		data.forEach((data) => {
+			ul.appendChild(filterLiDOM(data, css));
 		});
 
 		filterOptions.appendChild(filterOptionsSearch);
