@@ -6,5 +6,5 @@ function filterSelectedTemplate(datas, css) {
 
 		return div;
 	}
-	return filterSelectedDOM;
+	return { filterSelectedDOM };
 }

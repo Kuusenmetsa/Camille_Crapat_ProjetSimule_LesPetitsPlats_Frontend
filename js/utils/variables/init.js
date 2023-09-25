@@ -7,3 +7,8 @@ var recipesCurrent = recipesData;
 var ingredientsFilter = [];
 var ustensilsFilter = [];
 var appliancesFilter = [];
+
+// FilterSelected
+var ingredientsSelect = [];
+var ustensilsSelect = [];
+var appliancesSelect = [];
