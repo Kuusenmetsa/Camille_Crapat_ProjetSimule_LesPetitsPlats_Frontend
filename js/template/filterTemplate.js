@@ -18,7 +18,9 @@ function filterTemplate(type, css, data) {
 
 		const input = document.createElement('input');
 		input.setAttribute('type', 'text');
-		input.setAttribute('name', 'search');
+		input.setAttribute('name', `search-${css}`);
+		input.setAttribute('id', css);
+		input.setAttribute('class', 'search');
 
 		const erase = document.createElement('img');
 		erase.setAttribute('src', eraseImg);
@@ -35,6 +37,7 @@ function filterTemplate(type, css, data) {
 		filterOptionsSearch.appendChild(search);
 
 		const ul = document.createElement('ul');
+		ul.setAttribute('class', css);
 
 		data.forEach((data) => {
 			ul.appendChild(filterLiDOM(data, css));
