@@ -127,6 +127,10 @@ function filters() {
 	// Fermeture de tous les filters
 	function closeAllFilters() {
 		const isOpen = document.querySelectorAll('.open');
+		const inputs = document.querySelectorAll('.search-filter');
+		inputs.forEach((input) => {
+			search().eraseInput(input);
+		});
 		if (isOpen.length > 0) {
 			isOpen.forEach((isOpen) => {
 				isOpen.classList.remove('open');

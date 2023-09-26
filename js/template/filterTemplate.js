@@ -20,7 +20,7 @@ function filterTemplate(type, css, data) {
 		input.setAttribute('type', 'text');
 		input.setAttribute('name', `search-${css}`);
 		input.setAttribute('id', css);
-		input.setAttribute('class', 'search');
+		input.setAttribute('class', 'search-filter');
 
 		const erase = document.createElement('img');
 		erase.setAttribute('src', eraseImg);
