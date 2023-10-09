@@ -6,7 +6,7 @@ function recipes() {
 	// Fonction
 	// Affichage des recettes
 	function displayRecipes() {
-		recipesCurrent.forEach((recipe) => {
+		recipesDisplay.forEach((recipe) => {
 			const recipesModel = recipesTemplate(recipe);
 			const recipesDOM = recipesModel.recipesDOM();
 			recipesEmplacement.appendChild(recipesDOM);

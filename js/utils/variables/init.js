@@ -1,7 +1,8 @@
 // Variables
 
 // Recettes Global
-var recipesCurrent = recipesData;
+var recipesDisplay = recipesData;
+var recipesDelete = [];
 
 // Filter
 var ingredientsFilter = [];

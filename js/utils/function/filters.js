@@ -37,7 +37,7 @@ function filters() {
 	// filter
 	// Initialisation des filters avant affichage
 	function initFilters() {
-		recipesCurrent.forEach((recipe) => {
+		recipesDisplay.forEach((recipe) => {
 			recipe.ingredients.forEach((ingredient) => {
 				if (ingredientsFilter.length === 0) {
 					ingredientsFilter.push(ingredient.ingredient.toLowerCase());
