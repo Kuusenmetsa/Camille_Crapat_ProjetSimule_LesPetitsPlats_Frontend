@@ -6,6 +6,9 @@ function recipes() {
 	// Fonction
 	// Affichage des recettes
 	function displayRecipes() {
+		recipesEmplacement.querySelectorAll('*').forEach((el) => {
+			el.remove();
+		});
 		recipesDisplay.forEach((recipe) => {
 			const recipesModel = recipesTemplate(recipe);
 			const recipesDOM = recipesModel.recipesDOM();

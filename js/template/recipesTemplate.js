@@ -1,10 +1,11 @@
 function recipesTemplate(data) {
-	const { image, name, ingredients, time, description } = data;
+	const { id, image, name, ingredients, time, description } = data;
 
 	const picture = `assets/imgs/recettes/${image}`;
 
 	function recipesDOM() {
 		const article = document.createElement('article');
+		article.setAttribute('id', id);
 		const figure = document.createElement('figure');
 		const img = document.createElement('img');
 		img.setAttribute('src', picture);
