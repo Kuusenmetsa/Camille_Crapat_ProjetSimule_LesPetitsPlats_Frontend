@@ -29,6 +29,7 @@ function filters() {
 		li.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 			addFilterSelected(li);
+			search().searchVerif();
 		});
 	});
 
@@ -181,6 +182,7 @@ function filters() {
 				break;
 		}
 		el.remove();
+		search().searchVerif();
 		reloadEvent();
 	}
 	return { initFilters, sortFilters, displayFilters };
