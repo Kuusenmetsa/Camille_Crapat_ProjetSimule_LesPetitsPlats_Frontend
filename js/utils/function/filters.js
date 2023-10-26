@@ -29,7 +29,7 @@ function filters() {
 		li.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
 			addFilterSelected(li);
-			search().searchVerif();
+			search().searchVerif('addingFilter');
 		});
 	});
 
@@ -147,6 +147,7 @@ function filters() {
 			el.addEventListener('click', (e) => {
 				e.stopImmediatePropagation();
 				delteFilterSelected(el);
+				search().searchVerif('deleteFilter');
 			});
 		});
 
@@ -155,6 +156,7 @@ function filters() {
 			el.addEventListener('click', (e) => {
 				e.stopImmediatePropagation();
 				addFilterSelected(el);
+				search().searchVerif('addingFilter');
 			});
 		});
 	}
@@ -182,8 +184,8 @@ function filters() {
 				break;
 		}
 		el.remove();
-		search().searchVerif();
 		reloadEvent();
 	}
+
 	return { initFilters, sortFilters, displayFilters };
 }
