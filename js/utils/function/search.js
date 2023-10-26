@@ -83,6 +83,7 @@ function search() {
 			// Si un caractère a été ajouté dans l'input et que sa valeur est supérieur à 2 ou si on ajoute un filtre
 			for (i = 0; i < recipesDisplay.length; i++) {
 				var searchItsNotOk = true; // On initialise la variable d'état
+				var filterItsNotOk = true;
 
 				if (recipesDisplay[i] !== undefined) {
 					if (ingredientsSelect.length > 0 || appliancesSelect.length > 0 || ustensilsSelect.length > 0) {
@@ -127,27 +128,27 @@ function search() {
 						}
 						if (ingredientsSelect.length > 0) {
 							if (filterIngredientsItsOk) {
-								searchItsNotOk = false;
+								filterItsNotOk = false;
 							}
 						} else if (ingredientsSelect.length > 0 && appliancesSelect.length > 0) {
 							if (filterIngredientsItsOk && filterApplianceItsOk) {
-								searchItsNotOk = false;
+								filterItsNotOk = false;
 							}
 						} else if (ingredientsSelect.length > 0 && ustensilsSelect.length > 0) {
 							if (filterIngredientsItsOk && filterUstensilsItsOk) {
-								searchItsNotOk = false;
+								filterItsNotOk = false;
 							}
 						} else if (ingredientsSelect.length > 0 && appliancesSelect.length > 0 && ustensilsSelect.length > 0) {
 							if (filterIngredientsItsOk && filterUstensilsItsOk && filterApplianceItsOk) {
-								searchItsNotOk = false;
+								filterItsNotOk = false;
 							}
 						} else if (appliancesSelect.length > 0) {
 							if (filterApplianceItsOk) {
-								searchItsNotOk = false;
+								filterItsNotOk = false;
 							}
 						} else if (ustensilsSelect.length > 0) {
 							if (filterUstensilsItsOk) {
-								searchItsNotOk = false;
+								filterItsNotOk = false;
 							}
 						}
 					}
@@ -164,17 +165,40 @@ function search() {
 							}
 						}
 					}
-					if (searchItsNotOk) {
-						const recipe = document.getElementById(`${recipesDisplay[i].id}`);
+					if (
+						value.length > 2 &&
+						(ingredientsSelect.length > 0 || appliancesSelect.length > 0 || ustensilsSelect.length > 0)
+					) {
+						if (searchItsNotOk && filterItsNotOk) {
+							const recipe = document.getElementById(`${recipesDisplay[i].id}`);
 
-						recipesDelete.push(recipesDisplay[i]);
-						recipe.remove();
-						delete recipesDisplay[i];
-						numberOfRecipes();
+							recipesDelete.push(recipesDisplay[i]);
+							recipe.remove();
+							delete recipesDisplay[i];
+							numberOfRecipes();
+						}
+					} else if (value.length > 2) {
+						if (searchItsNotOk) {
+							const recipe = document.getElementById(`${recipesDisplay[i].id}`);
+
+							recipesDelete.push(recipesDisplay[i]);
+							recipe.remove();
+							delete recipesDisplay[i];
+							numberOfRecipes();
+						}
+					} else if (ingredientsSelect.length > 0 || appliancesSelect.length > 0 || ustensilsSelect.length > 0) {
+						if (filterItsNotOk) {
+							const recipe = document.getElementById(`${recipesDisplay[i].id}`);
+
+							recipesDelete.push(recipesDisplay[i]);
+							recipe.remove();
+							delete recipesDisplay[i];
+							numberOfRecipes();
+						}
 					}
 				}
 			}
-		} else {
+		} /*else {
 			for (i = 0; i < recipesDelete.length; i++) {
 				var searchItsOk = true; // On initialise la variable d'état
 
@@ -182,7 +206,7 @@ function search() {
 					console.log('ok');
 				}
 			}
-		}
+		}*/
 	}
 
 	function numberOfRecipes() {
