@@ -119,7 +119,6 @@ function search() {
 								var filterApplianceItsOk = false;
 								if (recipesDisplay[i].appliance.toLowerCase() === appliancesSelect[a].toLowerCase()) {
 									filterApplianceItsOk = true;
-									break;
 								} else {
 									filterApplianceItsOk = false;
 								}
@@ -246,7 +245,6 @@ function search() {
 								var filterApplianceItsOk = false;
 								if (recipesDelete[i].appliance.toLowerCase() === appliancesSelect[a].toLowerCase()) {
 									filterApplianceItsOk = true;
-									break;
 								} else {
 									filterApplianceItsOk = false;
 								}
