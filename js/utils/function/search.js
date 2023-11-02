@@ -167,16 +167,13 @@ function search() {
 						value.length > 2 &&
 						(ingredientsSelect.length > 0 || ustensilsSelect.length > 0 || appliancesSelect.length > 0)
 					) {
-						console.log('search', searchItsNotOk);
-						console.log('filter', filterItsNotOk);
 						if (searchItsNotOk || filterItsNotOk) {
-							console.log('search + filter');
 							const recipe = document.getElementById(`${recipesDisplay[i].id}`);
 
 							recipesDelete.push(recipesDisplay[i]);
 							recipe.remove();
 							delete recipesDisplay[i];
-							numberOfRecipes();
+							reloadDOM();
 						}
 					} else if (
 						value.length <= 2 &&
@@ -188,7 +185,7 @@ function search() {
 							recipesDelete.push(recipesDisplay[i]);
 							recipe.remove();
 							delete recipesDisplay[i];
-							numberOfRecipes();
+							reloadDOM();
 						}
 					} else if (
 						value.length > 2 &&
@@ -196,14 +193,13 @@ function search() {
 						ustensilsSelect.length === 0 &&
 						appliancesSelect.length === 0
 					) {
-						console.log('ok');
 						if (searchItsNotOk) {
 							const recipe = document.getElementById(`${recipesDisplay[i].id}`);
 
 							recipesDelete.push(recipesDisplay[i]);
 							recipe.remove();
 							delete recipesDisplay[i];
-							numberOfRecipes();
+							reloadDOM();
 						}
 					}
 				}
@@ -301,7 +297,7 @@ function search() {
 							recipesDisplay.push(recipesDelete[i]);
 							recipes.appendChild(recipesDOM);
 							delete recipesDelete[i];
-							numberOfRecipes();
+							reloadDOM();
 						}
 					} else if (
 						value.length <= 2 &&
@@ -315,7 +311,7 @@ function search() {
 							recipesDisplay.push(recipesDelete[i]);
 							recipes.appendChild(recipesDOM);
 							delete recipesDelete[i];
-							numberOfRecipes();
+							reloadDOM();
 						}
 					} else if (
 						value.length > 2 &&
@@ -331,7 +327,7 @@ function search() {
 							recipesDisplay.push(recipesDelete[i]);
 							recipes.appendChild(recipesDOM);
 							delete recipesDelete[i];
-							numberOfRecipes();
+							reloadDOM();
 						}
 					} else if (
 						value.length <= 2 &&
@@ -346,17 +342,27 @@ function search() {
 						recipesDisplay.push(recipesDelete[i]);
 						recipes.appendChild(recipesDOM);
 						delete recipesDelete[i];
-						numberOfRecipes();
+						reloadDOM();
 					}
 				}
 			}
 		}
 	}
 
-	function numberOfRecipes() {
+	function reloadDOM() {
+		const numberOfRecipesDOM = document.querySelectorAll('div.filters > div.filter');
+		numberOfRecipesDOM.forEach((el) => {
+			el.remove();
+		});
+
 		const count = document.querySelectorAll('.recettes > article').length;
 		const el = document.querySelector('.numberOfRecipes');
 		el.textContent = `${count} recette${count > 1 ? 's' : ''}`;
+
+		filters().initFilters();
+		filters().sortFilters();
+		filters().displayFilters();
+		filters().reloadEvent();
 	}
 
 	return { eraseInput, searchVerif };

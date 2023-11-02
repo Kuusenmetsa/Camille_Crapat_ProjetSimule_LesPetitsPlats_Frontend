@@ -38,26 +38,34 @@ function filters() {
 	// filter
 	// Initialisation des filters avant affichage
 	function initFilters() {
+		ingredientsFilter.length = 0;
+		ustensilsFilter.length = 0;
+		appliancesFilter.length = 0;
 		recipesDisplay.forEach((recipe) => {
-			recipe.ingredients.forEach((ingredient) => {
-				if (ingredientsFilter.length === 0) {
-					ingredientsFilter.push(ingredient.ingredient.toLowerCase());
-				} else if (ingredientsFilter.indexOf(ingredient.ingredient.toLowerCase()) === -1) {
-					ingredientsFilter.push(ingredient.ingredient.toLowerCase());
-				}
-			});
-			recipe.ustensils.forEach((ustensil) => {
-				if (ustensilsFilter.length === 0) {
-					ustensilsFilter.push(ustensil.toLowerCase());
-				} else if (ustensilsFilter.indexOf(ustensil.toLowerCase()) === -1) {
-					ustensilsFilter.push(ustensil.toLowerCase());
-				}
-			});
+			if (recipe !== undefined) {
+				recipe.ingredients.forEach((ingredient) => {
+					if (
+						ingredientsFilter.indexOf(ingredient.ingredient.toLowerCase()) === -1 &&
+						ingredientsSelect.indexOf(ingredient.ingredient.toLowerCase()) === -1
+					) {
+						ingredientsFilter.push(ingredient.ingredient.toLowerCase());
+					}
+				});
+				recipe.ustensils.forEach((ustensil) => {
+					if (
+						ustensilsFilter.indexOf(ustensil.toLowerCase()) === -1 &&
+						ustensilsSelect.indexOf(ustensil.toLowerCase()) === -1
+					) {
+						ustensilsFilter.push(ustensil.toLowerCase());
+					}
+				});
 
-			if (appliancesFilter.length === 0) {
-				appliancesFilter.push(recipe.appliance.toLowerCase());
-			} else if (appliancesFilter.indexOf(recipe.appliance.toLowerCase()) === -1) {
-				appliancesFilter.push(recipe.appliance.toLowerCase());
+				if (
+					appliancesFilter.indexOf(recipe.appliance.toLowerCase()) === -1 &&
+					appliancesSelect.indexOf(recipe.appliance.toLowerCase()) === -1
+				) {
+					appliancesFilter.push(recipe.appliance.toLowerCase());
+				}
 			}
 		});
 	}
@@ -187,5 +195,5 @@ function filters() {
 		reloadEvent();
 	}
 
-	return { initFilters, sortFilters, displayFilters };
+	return { initFilters, sortFilters, displayFilters, reloadEvent };
 }
