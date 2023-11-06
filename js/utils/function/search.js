@@ -173,7 +173,6 @@ function search() {
 							recipesDelete.push(recipesDisplay[i]);
 							recipe.remove();
 							delete recipesDisplay[i];
-							reloadDOM();
 						}
 					} else if (
 						value.length <= 2 &&
@@ -185,7 +184,6 @@ function search() {
 							recipesDelete.push(recipesDisplay[i]);
 							recipe.remove();
 							delete recipesDisplay[i];
-							reloadDOM();
 						}
 					} else if (
 						value.length > 2 &&
@@ -199,11 +197,11 @@ function search() {
 							recipesDelete.push(recipesDisplay[i]);
 							recipe.remove();
 							delete recipesDisplay[i];
-							reloadDOM();
 						}
 					}
 				}
 			}
+			reloadDOM();
 		} else {
 			for (i = 0; i < recipesDelete.length; i++) {
 				var searchItsOk = false; // On initialise la variable d'état
@@ -297,7 +295,6 @@ function search() {
 							recipesDisplay.push(recipesDelete[i]);
 							recipes.appendChild(recipesDOM);
 							delete recipesDelete[i];
-							reloadDOM();
 						}
 					} else if (
 						value.length <= 2 &&
@@ -311,7 +308,6 @@ function search() {
 							recipesDisplay.push(recipesDelete[i]);
 							recipes.appendChild(recipesDOM);
 							delete recipesDelete[i];
-							reloadDOM();
 						}
 					} else if (
 						value.length > 2 &&
@@ -327,7 +323,6 @@ function search() {
 							recipesDisplay.push(recipesDelete[i]);
 							recipes.appendChild(recipesDOM);
 							delete recipesDelete[i];
-							reloadDOM();
 						}
 					} else if (
 						value.length <= 2 &&
@@ -342,10 +337,10 @@ function search() {
 						recipesDisplay.push(recipesDelete[i]);
 						recipes.appendChild(recipesDOM);
 						delete recipesDelete[i];
-						reloadDOM();
 					}
 				}
 			}
+			reloadDOM();
 		}
 	}
 
