@@ -14,17 +14,12 @@ function search() {
 	// filter
 	// Lorsque l'on tape dans un input
 	searchInputFilter.forEach((search) => {
+		const erase = search.querySelector('.filter__options__search__erase');
 		const input = search.querySelector('.search-filter');
 		input.addEventListener('input', (e) => {
 			e.preventDefault();
 			getTypeFilter(input, e.target.value);
 		});
-	});
-
-	// Lorsqu'on clique sur erase dans recherche filter
-	searchInputFilter.forEach((search) => {
-		const erase = search.querySelector('.filter__options__search__erase');
-		const input = search.querySelector('.search-filter');
 		erase.addEventListener('click', () => {
 			eraseInput(input);
 		});
@@ -32,6 +27,7 @@ function search() {
 
 	// search
 	searchInput.forEach((search) => {
+		const erase = search.querySelector('.search__erase');
 		const input = search.querySelector('input');
 		input.addEventListener('input', (e) => {
 			if (e.data !== null) {
@@ -39,6 +35,10 @@ function search() {
 			} else {
 				searchVerif('deleteCharacter');
 			}
+		});
+		erase.addEventListener('click', () => {
+			input.value = '';
+			searchVerif('deleteCharacter');
 		});
 	});
 
@@ -52,6 +52,7 @@ function search() {
 	}
 	// Récupération du type de filter
 	function getTypeFilter(search, value) {
+		console.log('ok');
 		switch (search.getAttribute('id')) {
 			case 'ingredients':
 				searchFilter('ingredients', value);
@@ -358,6 +359,26 @@ function search() {
 		filters().sortFilters();
 		filters().displayFilters();
 		filters().reloadEvent();
+
+		const searchInputFilter = document.querySelectorAll('.filter__options__search');
+
+		searchInputFilter.forEach((search) => {
+			const input = search.querySelector('.search-filter');
+			input.addEventListener('input', (e) => {
+				console.log('reload');
+				e.preventDefault();
+				getTypeFilter(input, e.target.value);
+			});
+		});
+
+		// Lorsqu'on clique sur erase dans recherche filter
+		searchInputFilter.forEach((search) => {
+			const erase = search.querySelector('.filter__options__search__erase');
+			const input = search.querySelector('.search-filter');
+			erase.addEventListener('click', () => {
+				eraseInput(input);
+			});
+		});
 	}
 
 	return { eraseInput, searchVerif };
