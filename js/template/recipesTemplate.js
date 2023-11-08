@@ -1,7 +1,7 @@
 function recipesTemplate(data) {
-	const { id, image, name, ingredients, time, description } = data;
+	const { id, image, name, ingredients, time, description } = data; // On récupère de manière destructuré les données de la recette
 
-	const picture = `assets/imgs/recettes/${image}`;
+	const picture = `assets/imgs/recettes/${image}`; // On initialise le chemin vers l'image de la recette
 
 	function recipesDOM() {
 		const article = document.createElement('article');

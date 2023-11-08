@@ -1,4 +1,4 @@
-// Variables
+// VARIABLES
 
 // Recettes Global
 var recipesDisplay = recipesData;
