@@ -5,6 +5,7 @@ function recipesTemplate(data) {
 
 	function recipesDOM() {
 		const article = document.createElement('article');
+		article.setAttribute('id', id);
 		const figure = document.createElement('figure');
 		const img = document.createElement('img');
 		img.setAttribute('src', picture);

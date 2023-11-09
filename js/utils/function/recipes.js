@@ -1,15 +1,22 @@
+/*--------------------------------------------------------------------------------------------------------------*/
+/*---------------------------------------------function recipes-------------------------------------------------*/
+/*----------------------------------------fonction gérant les recettes------------------------------------------*/
+/*---------------------------------------------par Camille CRAPAT-----------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+
 function recipes() {
-	// Variables
+	// VARIABLES
 	// DOM
 	const recipesEmplacement = document.querySelector('section.recettes'); // Emplacement où seront placé les différentes recettes
 
-	// Fonction
+	// FONCTIONS
 	// Affichage des recettes
 	function displayRecipes() {
 		recipesDisplay.forEach((recipe) => {
-			const recipesModel = recipesTemplate(recipe);
-			const recipesDOM = recipesModel.recipesDOM();
-			recipesEmplacement.appendChild(recipesDOM);
+			// On parcours le tableau des recettes affichées
+			const recipesModel = recipesTemplate(recipe); // On envoi les données de la recette au tempalte
+			const recipesDOM = recipesModel.recipesDOM(); // On stock la création de la recette en DOM
+			recipesEmplacement.appendChild(recipesDOM); // On l'ajoute au DOM
 		});
 	}
 
