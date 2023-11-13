@@ -39,7 +39,7 @@ function filters() {
 			// Lorsqu'on clcik sur un li
 			e.stopImmediatePropagation();
 			addFilterSelected(li); // On charge la fonction permettant de transformer l'élèment selectionné en filtre selectionné
-			// search().searchVerif('addingFilter'); // On charge l'algorythme de recherche
+			search().searchVerif('addingFilter'); // On charge l'algorythme de recherche
 		});
 	});
 
@@ -184,7 +184,7 @@ function filters() {
 				// Si on click dessus
 				e.stopImmediatePropagation();
 				delteFilterSelected(el); // On supprime le filtreSelect
-				// search().searchVerif('deleteFilter'); // On réinitialise l'algorythme de recherche
+				search().searchVerif('deleteFilter'); // On réinitialise l'algorythme de recherche
 			});
 		});
 
@@ -195,7 +195,7 @@ function filters() {
 				// Lorsqu'on click dessus
 				e.stopImmediatePropagation();
 				addFilterSelected(el); // On ajoute un filtre selectionné
-				// search().searchVerif('addingFilter'); // On lance l'algorytme de recherche
+				search().searchVerif('addingFilter'); // On lance l'algorytme de recherche
 			});
 		});
 	}
