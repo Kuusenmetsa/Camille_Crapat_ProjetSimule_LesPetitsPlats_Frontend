@@ -91,10 +91,12 @@ function search() {
 					(recipe.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
 					recipe.description.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
 					recipe.ingredients.some((el) => el.ingredient.toLowerCase().indexOf(value.toLowerCase()) !== -1)) &&
-						(!ustensilsSelect.some(
-							(el) => recipe.ustensils.map((e) => e.toLowerCase()).includes(el.toLowerCase()) === false
+						(ustensilsSelect.every(
+							(el) => recipe.ustensils.map((e) => e.toLowerCase()).includes(el.toLowerCase())
+						) && ingredientsSelect.every(
+							(el) => recipe.ingredients.some((e) => e.ingredient.toLowerCase().includes(el.toLowerCase()))
 						) &&
-						!appliancesSelect.some((el) => recipe.appliance.toLowerCase() !== el.toLowerCase())) // prettier-ignore
+						appliancesSelect.every((el) => recipe.appliance.toLowerCase() === el.toLowerCase())) // prettier-ignore
 			); // On récupère les recettes correspondant au champ de recherches et aux filtres selectionnés
 			recipesDisplay = newRecipesDisplay; // On met à jour le tableau des recettes
 			document.querySelectorAll('.recettes > article').forEach((el) => el.remove()); // On supprime les recettes affichées dans le DOM
@@ -107,14 +109,18 @@ function search() {
 					(recipe.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
 					recipe.description.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
 					recipe.ingredients.some((el) => el.ingredient.toLowerCase().indexOf(value.toLowerCase()) !== -1))) && 
-					(!ustensilsSelect.some(
-						(el) => recipe.ustensils.map((e) => e.toLowerCase()).includes(el.toLowerCase()) === false
+					(ustensilsSelect.every(
+						(el) => recipe.ustensils.map((e) => e.toLowerCase()).includes(el.toLowerCase())
+					) && ingredientsSelect.every(
+						(el) => recipe.ingredients.some((e) => e.ingredient.toLowerCase().includes(el.toLowerCase()))
 					) &&
-					!appliancesSelect.some((el) => recipe.appliance.toLowerCase() !== el.toLowerCase()))) || 
-					((value.length <= 2 && (!ustensilsSelect.some(
-						(el) => recipe.ustensils.map((e) => e.toLowerCase()).includes(el.toLowerCase()) === false
+					appliancesSelect.every((el) => recipe.appliance.toLowerCase() === el.toLowerCase()))) || 
+					((value.length <= 2 && (ustensilsSelect.every(
+						(el) => recipe.ustensils.map((e) => e.toLowerCase()).includes(el.toLowerCase())
+					) && ingredientsSelect.every(
+						(el) => recipe.ingredients.some((e) => e.ingredient.toLowerCase().includes(el.toLowerCase()))
 					) &&
-					!appliancesSelect.some((el) => recipe.appliance.toLowerCase() !== el.toLowerCase()))))); // prettier-ignore
+					appliancesSelect.every((el) => recipe.appliance.toLowerCase() === el.toLowerCase()))))); // prettier-ignore
 			recipesDisplay = newRecipesDisplay;
 			document.querySelectorAll('.recettes > article').forEach((el) => el.remove()); // On supprime les recettes affichées dans le DOM
 			recipes().displayRecipes(); // on affiche les recettes à l'écran
