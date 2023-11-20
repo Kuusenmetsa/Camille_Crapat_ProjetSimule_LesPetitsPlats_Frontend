@@ -24,7 +24,11 @@ function search() {
 		const input = search.querySelector('.search-filter');
 		input.addEventListener('input', (e) => {
 			e.preventDefault();
-			getTypeFilter(input, e.target.value); // On applique la recherche dans le filtre
+			if (regex(e.target.value)) {
+				getTypeFilter(input, e.target.value); // On applique la recherche dans le filtre
+			} else {
+				console.log('vous avez saisi un champs incorect');
+			}
 		});
 		erase.addEventListener('click', () => {
 			eraseInput('filters', input);
@@ -37,12 +41,16 @@ function search() {
 		const erase = search.querySelector('.search__erase');
 		const input = search.querySelector('input');
 		input.addEventListener('input', (e) => {
-			if (e.data !== null) {
-				// Si on ajoute un caractère
-				searchVerif('addingCharacter');
+			if (regex(e.target.value)) {
+				if (e.data !== null) {
+					// Si on ajoute un caractère
+					searchVerif('addingCharacter');
+				} else {
+					// Si on eface un caractère
+					searchVerif('deleteCharacter');
+				}
 			} else {
-				// Si on eface un caractère
-				searchVerif('deleteCharacter');
+				console.log('vous avez saisi un champs incorect');
 			}
 		});
 		erase.addEventListener('click', () => {
@@ -441,7 +449,11 @@ function search() {
 			input.addEventListener('input', (e) => {
 				// En cas de changement de l'input
 				e.preventDefault();
-				getTypeFilter(input, e.target.value); // on affiche ou masque les élèments selon la recherche
+				if (regex(e.target.value)) {
+					getTypeFilter(input, e.target.value); // On applique la recherche dans le filtre
+				} else {
+					console.log('vous avez saisi un champs incorect');
+				}
 			});
 			erase.addEventListener('click', () => {
 				// En cas de click sur erase
@@ -451,6 +463,15 @@ function search() {
 	}
 
 	// FONCTION commune
+	// Test de la valeur des champs de recherche
+	function regex(value) {
+		const regexText = /^[a-zA-ZàâäéèêëïîôöùûüçÂ\s\-]+$/;
+		if (!regexText.test(value) && value.length > 0) {
+			return false;
+		}
+		return true;
+	}
+
 	// Suppression de la valeur du champs recherche dans filtre
 	function eraseInput(type, input) {
 		input.value = ''; // On passe la valeur de l'input à vide
